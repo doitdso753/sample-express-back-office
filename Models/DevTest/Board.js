@@ -28,6 +28,9 @@ class Board extends Sequelize.Model {
                 underscored: false,
                 paranoid: false,
                 // modelName: 'User',
+                createdAt: 'created_at',
+                updatedAt: 'updated_at',
+                deletedAt: 'deleted_at',
                 tableName: 'board',
                 charset: 'utf8mb4',
                 collate: 'utf8mb4_general_ci'

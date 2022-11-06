@@ -25,11 +25,14 @@ class BoardController {
         });
     }
 
+    /**
+     * 게시판 조회
+     * */
     async getBoardList(req, res) {
         try {
             const boardList = await this.models.Board.findAll({
                 attributes: {
-                    // exclude: ['updated_at', 'deleted_at']
+                    exclude: ['updated_at', 'deleted_at']
                 },
                 raw: true
             });
@@ -47,5 +50,58 @@ class BoardController {
         }
     }
 
+    /**
+     * 게시글 등록
+     * */
+    async postBoardOne(req, res) {
+        try {
+            res.send({
+                code: 'success',
+                message: '성공했습니다.',
+            });
+        } catch (e) {
+            console.log(e);
+            res.send({
+                code: 'fail',
+                message: '실패 했습니다.'
+            });
+        }
+    }
+
+    /**
+     * 게시글 수정
+     * */
+    async putBoardOne(req, res) {
+        try {
+            res.send({
+                code: 'success',
+                message: '성공했습니다.',
+            });
+        } catch (e) {
+            console.log(e);
+            res.send({
+                code: 'fail',
+                message: '실패 했습니다.'
+            });
+        }
+    }
+
+    /**
+     * 게시글 삭제
+     * */
+    async deleteBoardOne(req, res) {
+        try {
+            res.send({
+                code: 'success',
+                message: '성공했습니다.',
+            });
+        } catch (e) {
+            console.log(e);
+            res.send({
+                code: 'fail',
+                message: '실패 했습니다.'
+            });
+        }
+    }
 }
 module.exports = BoardController;
