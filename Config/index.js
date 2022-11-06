@@ -18,9 +18,9 @@ const defaultConfig = {
 
   // DB 설정
   DB_HOST: 'localhost',
-  DB_NAME: 'database',
+  DB_NAME: 'dev_test',
   DB_USER: 'root',
-  DB_PASSWORD: 'changeme',
+  DB_PASSWORD: '1234',
   DB_PORT: 3306,
   DB_DIALECT: 'mariadb',
   DB_TIMEZONE: '+00:00',
