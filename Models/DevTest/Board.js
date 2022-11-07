@@ -9,7 +9,8 @@ class Board extends Sequelize.Model {
                     type: Sequelize.INTEGER,
                     allowNull: false,
                     primaryKey: true,
-                    unique: true
+                    autoIncrement: true,
+                    unique: true,
                 },
                 title: {
                     type: Sequelize.STRING(50),

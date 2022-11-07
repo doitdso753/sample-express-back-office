@@ -34,7 +34,10 @@ class BoardController {
                 attributes: {
                     exclude: ['updated_at', 'deleted_at']
                 },
-                raw: true
+                raw: true,
+                order: [
+                    ['created_at', 'DESC'],
+                ],
             });
             res.send({
                 code: 'success',
@@ -51,10 +54,45 @@ class BoardController {
     }
 
     /**
+     * 게시글 조회
+     * */
+    async getBoardOne(req, res) {
+        try {
+            const { id } = req.params;
+
+            const board = await this.models.Board.findOne({
+                where: { id },
+                raw: true
+            });
+
+            res.send({
+                code: 'success',
+                message: '성공했습니다.',
+                data: board,
+            });
+        } catch (e) {
+            console.log(e);
+            res.send({
+                code: 'fail',
+                message: '실패 했습니다.'
+            });
+        }
+    }
+
+    /**
      * 게시글 등록
      * */
     async postBoardOne(req, res) {
         try {
+            const { title, content } = req.body;
+
+            const board = await this.models.Board.create({
+                title,
+                content,
+            }, {
+                raw: true
+            });
+
             res.send({
                 code: 'success',
                 message: '성공했습니다.',
@@ -73,6 +111,17 @@ class BoardController {
      * */
     async putBoardOne(req, res) {
         try {
+            const { id } = req.params;
+            const { title, content } = req.body;
+
+            const board = await this.models.Board.update({
+                title,
+                content,
+            }, {
+                where: { id },
+                raw: true
+            });
+
             res.send({
                 code: 'success',
                 message: '성공했습니다.',
@@ -91,6 +140,13 @@ class BoardController {
      * */
     async deleteBoardOne(req, res) {
         try {
+            const { id } = req.params;
+
+            const board = await this.models.Board.destroy({
+                where: { id },
+                raw: true
+            });
+
             res.send({
                 code: 'success',
                 message: '성공했습니다.',

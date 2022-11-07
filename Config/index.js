@@ -2,7 +2,8 @@ const fs = require('fs');
 const dotenv = require('dotenv');
 
 // 파일을 읽는다 process.env 를 사용하지 않기 위해 아래와 같이 동작을 하도록 한다.
-const configPath = `${process.cwd()}/Config/.env.${process.env.NODE_ENV ?? 'development'}`;
+// const configPath = `${process.cwd()}/Config/.env.${process.env.NODE_ENV ?? 'development'}`;
+const configPath = `${process.cwd()}/Config/.env`;
 
 // 설정 파일을 읽는다.
 const loadConfig = dotenv.parse(fs.existsSync(configPath) ? fs.readFileSync(configPath) : '');
